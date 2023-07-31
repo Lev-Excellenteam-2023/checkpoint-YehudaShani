@@ -22,13 +22,12 @@ int main(){
         i++;
         int numParams = 0;
         int offset = 0;
+
         while (sscanf(buffer + offset, "%49s", params[numParams]) == 1) {
             numParams++;
 
             // Move the offset to the next word (plus 1 to skip the delimiter)
             offset += snprintf(NULL, 0, "%s", params[numParams - 1]) + 1;
-
-
 
             if (numParams >= 15) {
                 break; // Stop if we have 15 parameters

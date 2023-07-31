@@ -6,9 +6,9 @@ typedef struct Student {
 	char firstName[20];
 	char lastName[20];
 	char phoneNumber[11];
-	char year[3];
+	char year[3]; 
 	char section[3];
-	char* grades[10];
+	char grades[10][3];
 } Student_t;
 
 Student_t* createStudents(char* firstName, char* lastName, char* phoneNumber, char* year, char* section, char* grade0, char* grade1,
