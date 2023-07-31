@@ -12,5 +12,6 @@ void eraseWholeList(StudentNode_t* studentNode) {
 		return;
 	}
 	eraseWholeList(studentNode->next);
+	eraseStudent(studentNode->student);
 	free(studentNode);
 }
