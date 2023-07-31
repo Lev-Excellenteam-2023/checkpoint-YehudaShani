@@ -15,11 +15,9 @@ int main(){
     }
 
     char buffer[100]; // Assuming each line has at most 99 characters, adjust the size as needed
-    int i = 0;
-    while (fgets(buffer, sizeof(buffer), file) != NULL && i < 100) {
+    while (fgets(buffer, sizeof(buffer), file) != NULL) {
 
         char params[15][20];
-        i++;
         int numParams = 0;
         int offset = 0;
 

@@ -3,7 +3,7 @@
 
 typedef struct StudentNode {
 	Student_t* student;
-	struct studentNode* next;
+	struct StudentNode* next;
 } StudentNode_t;
 
 StudentNode_t* createStudentNode(Student_t* student);

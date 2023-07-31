@@ -8,7 +8,7 @@ typedef struct Student {
 	char phoneNumber[11];
 	char year[3]; 
 	char section[3];
-	char grades[10][3];
+	char grades[10][4];
 } Student_t;
 
 Student_t* createStudents(char* firstName, char* lastName, char* phoneNumber, char* year, char* section, char* grade0, char* grade1,
