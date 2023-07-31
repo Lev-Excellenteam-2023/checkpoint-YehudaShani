@@ -28,7 +28,6 @@ int main(){
 
             // Move the offset to the next word (plus 1 to skip the delimiter)
             offset += snprintf(NULL, 0, "%s", params[numParams - 1]) + 1;
-            printf("%s ", params[numParams - 1]);
 
 
 
@@ -37,18 +36,16 @@ int main(){
             }
         }
 
-        //print all params
-        for (int i = 0; i < numParams; i++) {
-			printf("%s ", params[i]);
-		}
 
-
-        school->students[atoi(params[3])][atoi(params[4])] = createStudents(params[0], params[1], params[2],
+        Student_t* student = createStudents(params[0], params[1], params[2],
             params[3], params[4], params[5], params[6], params[7], params[8], params[9], params[10], params[11],
             params[12], params[13], params[14]);
 
+        StudentNode_t* studentNode = createStudentNode(student);
+        addStudent(school, studentNode, params[3], params[4]);
+
         printf("\n");
-        printStudent(school->students[atoi(params[3])][atoi(params[4])]);
+        printStudent(school->students[atoi(params[3]) - 1][atoi(params[4]) - 1]->student);
 
 
     }

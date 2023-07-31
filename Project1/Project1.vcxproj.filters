@@ -18,16 +18,13 @@
     <ClCompile Include="school.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="classroom.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="student.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="year.c">
+    <ClCompile Include="main.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="main.c">
+    <ClCompile Include="studentNode.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -36,6 +33,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="School.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="studentNode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
