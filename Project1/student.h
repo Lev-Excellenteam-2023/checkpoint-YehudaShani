@@ -16,3 +16,5 @@ Student_t* createStudents(char* firstName, char* lastName, char* phoneNumber, ch
 							char* grade9);
 
 void printStudent(Student_t* student);
+
+void eraseStudent(Student_t* student);

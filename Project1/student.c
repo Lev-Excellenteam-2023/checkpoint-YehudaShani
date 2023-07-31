@@ -37,3 +37,6 @@ void printStudent(Student_t* student)
 	printf("\n");
 }
 
+void eraseStudent(Student_t* student) {
+	free(student);
+}

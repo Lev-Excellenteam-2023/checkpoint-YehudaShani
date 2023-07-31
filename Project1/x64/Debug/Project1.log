@@ -1,4 +1,2 @@
-﻿  school.c
-C:\Users\yehuda\Documents\ExcelenTeam\C Project - School\Project1\school.c(15,20): warning C4133: '=': incompatible types - from 'StudentNode_t *' to 'studentNode *'
-C:\Users\yehuda\Documents\ExcelenTeam\C Project - School\Project1\school.c(25,13): warning C4133: '=': incompatible types - from 'studentNode *' to 'StudentNode_t *'
+﻿  main.c
   Project1.vcxproj -> C:\Users\yehuda\Documents\ExcelenTeam\C Project - School\Project1\x64\Debug\Project1.exe

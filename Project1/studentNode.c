@@ -6,3 +6,11 @@ StudentNode_t* createStudentNode(Student_t* student) {
 	studentNode->next = NULL;
 	return studentNode;
 }
+
+void eraseWholeList(StudentNode_t* studentNode) {
+	if (studentNode == NULL) {
+		return;
+	}
+	eraseWholeList(studentNode->next);
+	free(studentNode);
+}

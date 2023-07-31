@@ -7,3 +7,5 @@ typedef struct StudentNode {
 } StudentNode_t;
 
 StudentNode_t* createStudentNode(Student_t* student);
+
+void eraseWholeList(StudentNode_t* studentNode);

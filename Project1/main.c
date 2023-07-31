@@ -1,13 +1,14 @@
+#define _CRT_SECURE_NO_WARNINGS
+
+
 #include "school.h"
+#include <stdio.h>
 
 int main(){
 
     School_t* school = createSchool();
-    FILE* file;
-    if (fopen_s(&file, "students_with_class.txt", "r") != 0) {
-        printf("Error opening the file.\n");
-        return 1;
-    }
+    FILE* file = fopen("students_with_class.txt", "r");
+
     if (file == NULL) {
         printf("Error opening the file.\n");
         exit(1);
@@ -21,7 +22,7 @@ int main(){
         i++;
         int numParams = 0;
         int offset = 0;
-        while (sscanf_s(buffer + offset, "%49s", params[numParams], sizeof(params[numParams])) == 1) {
+        while (sscanf(buffer + offset, "%49s", params[numParams]) == 1) {
             numParams++;
 
             // Move the offset to the next word (plus 1 to skip the delimiter)
@@ -49,6 +50,8 @@ int main(){
     }
 
     printSchool(school);
+
+    eraseSchool(school);
 
     fclose(file);
     return 0;

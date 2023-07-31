@@ -27,3 +27,11 @@ void printSchool(School_t* school) {
 		}
 	}
 }
+
+void eraseSchool(School_t* school) {
+	for (int i = 0; i < 12; i++) {
+		for (int j = 0; j < 10; j++) {
+			eraseWholeList(school->students[i][j]);
+		}
+	}
+}
