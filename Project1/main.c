@@ -2,8 +2,7 @@
 
 int main(){
 
-    School_t* school = malloc(sizeof(struct School));
-
+    School_t* school = createSchool();
     FILE* file;
     if (fopen_s(&file, "students_with_class.txt", "r") != 0) {
         printf("Error opening the file.\n");
@@ -15,10 +14,9 @@ int main(){
     }
 
     char buffer[100]; // Assuming each line has at most 99 characters, adjust the size as needed
-
     int i = 0;
     while (fgets(buffer, sizeof(buffer), file) != NULL && i < 100) {
-        // Process the line (in this example, just print it
+
         char params[15][20];
         i++;
         int numParams = 0;
@@ -44,11 +42,13 @@ int main(){
         StudentNode_t* studentNode = createStudentNode(student);
         addStudent(school, studentNode, params[3], params[4]);
 
+        /*
         printf("\n");
         printStudent(school->students[atoi(params[3]) - 1][atoi(params[4]) - 1]->student);
-
-
+        */
     }
+
+    printSchool(school);
 
     fclose(file);
     return 0;
