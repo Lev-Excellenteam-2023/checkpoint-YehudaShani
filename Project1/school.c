@@ -34,4 +34,5 @@ void eraseSchool(School_t* school) {
 			eraseWholeList(school->students[i][j]);
 		}
 	}
+	free(school);
 }
