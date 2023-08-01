@@ -1,7 +1,7 @@
 #include "studentNode.h"
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <string.h>
 /*
 * Constructor for StudentNode
 */

@@ -1,9 +1,10 @@
-#define _CRT_SECURE_NO_WARNINGS
 
 #include "school.h"
-#include "topTen.h"
+
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+
 
 /*
 * Constructor for school class
@@ -163,21 +164,25 @@ void findAndPrintStudent(School_t* school, char* firstName, char* lastName) {
 /*
 * Function prints top ten students in every year in a specific subject
 */
+
 void printTopTenPerClass(School_t* school, int index) {
-	TopTen_t* topTen = createTopTen(index);
+	TopTen_t* topTen = (TopTen_t *) createTopTen(index);
 	for (int i = 0; i < 12; i++) {
 		for (int j = 0; j < 10; j++) {
 			StudentNode_t* current = school->students[i][j];
 			while (current != NULL) {
-				insertToTopTen(topTen, current->student);
+				addStudentToTopTen(topTen, current->student);
 				current = current->next;
 			}
-			printf("Printing top ten students in year %d, section %d, in subject %d:\n", i + 1, j + 1, index);
+			printf("Printing best students in year %d - class %d in subject %d:\n", i+1, j+1, index);
 			for (int k = 0; k < 10; k++) {
 				if (topTen->topStudents[k] != NULL) {
 					printStudent(topTen->topStudents[k]);
 				}
 			}
 		}
+		restartTopTen(topTen);
 	}
+	
 }
+

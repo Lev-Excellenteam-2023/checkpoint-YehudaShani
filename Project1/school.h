@@ -1,5 +1,8 @@
-#pragma once
+#ifndef H_SCHOOL
+#define H_SCHOOL
+
 #include "studentNode.h"
+#include "topTen.h"
 
 /*
 * class that represents a School
@@ -26,3 +29,5 @@ void updateStudent(School_t* school, char* firstName, char* lastName, char* year
 void findAndPrintStudent(School_t* school, char* firstName, char* lastName);
 
 void printTopTenPerClass(School_t* school, int index);
+
+#endif // !H_SCHOOL

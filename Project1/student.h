@@ -14,12 +14,13 @@ typedef struct Student {
 	char grades[10][4];
 } Student_t;
 
+void printStudent(Student_t* student);
+
+void eraseStudent(Student_t* student);
+
 Student_t* createStudent(char* firstName, char* lastName, char* phoneNumber, char* year, char* section, char* grade0, char* grade1,
 							char* grade2, char* grade3, char* grade4, char* grade5, char* grade6, char* grade7, char* grade8,
 							char* grade9);
 
-void printStudent(Student_t* student);
-
-void eraseStudent(Student_t* student);
 
 #endif 
