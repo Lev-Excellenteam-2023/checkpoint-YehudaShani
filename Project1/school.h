@@ -22,3 +22,5 @@ void insertNewStudent(School_t* school);
 void deleteStudent(School_t* school, char* firstName, char* lastName, char* year, char* section);
 
 void updateStudent(School_t* school, char* firstName, char* lastName, char* year, char* section, int index, char* grade);
+
+void findAndPrintStudent(School_t* school, char* firstName, char* lastName);

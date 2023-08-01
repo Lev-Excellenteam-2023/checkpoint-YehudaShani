@@ -134,5 +134,22 @@ void deleteStudent(School_t* school, char* firstName, char* lastName, char* year
 void updateStudent(School_t* school, char* firstName, char* lastName, char* year, char* section, int index, char* grade) {
 	StudentNode_t* classList = school->students[atoi(year) - 1][atoi(section) - 1];
 	StudentNode_t* studentNode = findStudentNode(classList, firstName, lastName);
+
+	//TODO: maybe need to modify student from student class
 	strcpy(studentNode->student->grades[index], grade);
+}
+
+void findAndPrintStudent(School_t* school, char* firstName, char* lastName) {
+	for (int i = 0; i < 12; i++) {
+		for (int j = 0; j < 10; j++) {
+			StudentNode_t* current = school->students[i][j];
+			while (current != NULL) {
+				if (strcmp(current->student->firstName, firstName) == 0 && strcmp(current->student->lastName, lastName) == 0) {
+					printStudent(current->student);
+					return;
+				}
+				current = current->next;
+			}
+		}
+	}
 }
