@@ -45,7 +45,7 @@ School_t* createSchool() {
 		StudentNode_t* studentNode = createStudentNode(student);
 		addStudentNode(school, studentNode, params[3], params[4]);
 	}
-	fclose(file);
+
 	return school;
 }
 
@@ -88,7 +88,7 @@ void eraseSchool(School_t* school) {
 /*
 * Function receives student's details from user, creates a student and adds it to school
 */
-void addStudent(School_t* school) {
+void insertNewStudent(School_t* school) {
 	printf("Enter student's details:\n");
 	char* params[15];
 	for (int i = 0; i < 15; i++) {
