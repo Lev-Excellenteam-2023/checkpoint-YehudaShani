@@ -183,6 +183,6 @@ void printTopTenPerClass(School_t* school, int index) {
 		}
 		restartTopTen(topTen);
 	}
-	
+	free(topTen);
 }
 
