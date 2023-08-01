@@ -12,7 +12,7 @@ int main(){
 
     School_t* school = createSchool();
     
-
+    insertNewStudent(school);
     printSchool(school);
     eraseSchool(school);
     return 0;

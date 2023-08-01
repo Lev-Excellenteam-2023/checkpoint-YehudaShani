@@ -86,6 +86,9 @@ void eraseSchool(School_t* school) {
 	free(school);
 }
 
+/*
+* Function inserts new student to school
+*/
 void insertNewStudent(School_t* school) {
 	printf("Enter student's details:\n");
 	char* params[15];
@@ -114,5 +117,28 @@ void insertNewStudent(School_t* school) {
 
 	for (int i = 0; i < 15; i++) {
 		free(params[i]);
+	}
+}
+
+/*
+* Function deletes student from school
+*/
+void deleteStudent(School_t* school, char* firstName, char* lastName, char* year, char* section) {
+	StudentNode_t* classList = school->students[atoi(year) - 1][atoi(section) - 1];
+	StudentNode_t* prev = NULL;
+	StudentNode_t* current = classList;
+	while (current != NULL) {
+		if (strcmp(current->student->firstName, firstName) == 0 && strcmp(current->student->lastName, lastName) == 0) {
+			if (prev == NULL) {
+				school->students[atoi(year) - 1][atoi(section) - 1] = current->next;
+			}
+			else {
+				prev->next = current->next;
+			}
+			eraseStudentNode(current);
+			return;
+		}
+		prev = current;
+		current = current->next;
 	}
 }
