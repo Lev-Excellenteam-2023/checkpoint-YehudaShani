@@ -16,3 +16,5 @@ void addStudent(School_t* school, StudentNode_t* studentNode, char* year, char* 
 void printSchool(School_t* school);
 
 void eraseSchool(School_t* school);
+
+void insertNewStudent(School_t* school);

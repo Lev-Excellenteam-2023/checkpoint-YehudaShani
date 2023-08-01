@@ -37,7 +37,7 @@ int main(){
         }
 
 
-        Student_t* student = createStudents(params[0], params[1], params[2],
+        Student_t* student = createStudent(params[0], params[1], params[2],
             params[3], params[4], params[5], params[6], params[7], params[8], params[9], params[10], params[11],
             params[12], params[13], params[14]);
 
