@@ -127,3 +127,12 @@ void deleteStudent(School_t* school, char* firstName, char* lastName, char* year
 	StudentNode_t* classList = school->students[atoi(year) - 1][atoi(section) - 1];
 	eraseStudentNode(classList, firstName, lastName);
 }
+
+/*
+* Function receives a student, finds it, and updates its grande in a specific course
+*/
+void updateStudent(School_t* school, char* firstName, char* lastName, char* year, char* section, int index, char* grade) {
+	StudentNode_t* classList = school->students[atoi(year) - 1][atoi(section) - 1];
+	StudentNode_t* studentNode = findStudentNode(classList, firstName, lastName);
+	strcpy(studentNode->student->grades[index], grade);
+}

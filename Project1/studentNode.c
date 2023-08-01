@@ -25,6 +25,9 @@ void eraseWholeList(StudentNode_t* studentNode) {
 	free(studentNode);
 }
 
+/*
+* Function deletes student node from linked list of studentNodes
+*/
 void eraseStudentNode(StudentNode_t* studentNode, char* firstName, char* lastName) {
 	StudentNode_t* current = studentNode;
 	StudentNode_t* prev = NULL;
@@ -44,3 +47,19 @@ void eraseStudentNode(StudentNode_t* studentNode, char* firstName, char* lastNam
 		current = current->next;
 	}
 }
+
+/*
+* Function finds student node in linked list of studentNodes
+*/
+StudentNode_t* findStudentNode(StudentNode_t* studentNode, char* firstName, char* lastName) {
+	StudentNode_t* current = studentNode;
+	while (current != NULL) {
+		if (strcmp(current->student->firstName, firstName) == 0 && strcmp(current->student->lastName, lastName) == 0) {
+			return current;
+		}
+		current = current->next;
+	}
+	printf("Student not found\n");
+	return NULL;
+}
+

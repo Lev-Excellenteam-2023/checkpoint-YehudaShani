@@ -14,6 +14,7 @@ int main(){
     
     insertNewStudent(school);
     deleteStudent(school, "Riley", "Pringle", "3", "4");
+    updateStudent(school, "yehuda", "shani", "1", "1", 0, "100");
     printSchool(school);
     eraseSchool(school);
     return 0;
