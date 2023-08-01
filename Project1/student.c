@@ -1,5 +1,8 @@
 #include "student.h"
 
+/*
+* Constructor for Student class
+*/
 Student_t* createStudents(char* firstName, char* lastName, char* phoneNumber, char* year, char* section, char* grade0, char* grade1,
 	char* grade2, char* grade3, char* grade4, char* grade5, char* grade6, char* grade7, char* grade8,
 	char* grade9){
@@ -23,6 +26,9 @@ Student_t* createStudents(char* firstName, char* lastName, char* phoneNumber, ch
 	return student;
 }
 
+/*
+* Function for printing all student info
+*/
 void printStudent(Student_t* student)
 {
 	printf("First Name: %s\n", student->firstName);
@@ -37,6 +43,9 @@ void printStudent(Student_t* student)
 	printf("\n");
 }
 
+/*
+* Function erases students allocated memory
+*/
 void eraseStudent(Student_t* student) {
 	free(student);
 }

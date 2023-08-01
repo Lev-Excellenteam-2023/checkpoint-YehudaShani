@@ -1,6 +1,9 @@
 #pragma once
 #include "student.h"
 
+/*
+* Class representing a Student Node
+*/
 typedef struct StudentNode {
 	Student_t* student;
 	struct StudentNode* next;

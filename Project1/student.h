@@ -2,6 +2,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/*
+* Class for representing a student
+*/
 typedef struct Student {
 	char firstName[20];
 	char lastName[20];
