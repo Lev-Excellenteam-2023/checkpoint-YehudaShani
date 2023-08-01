@@ -52,3 +52,15 @@ void printStudent(Student_t* student)
 void eraseStudent(Student_t* student) {
 	free(student);
 }
+
+/*
+* Function calculates average of student grades
+*/
+double calculateAverage(Student_t* student) {
+	double sum = 0;
+	for (int i = 0; i < 10; i++) {
+		sum += atoi(student->grades[i]);
+	}
+	return sum / 10;
+}
+

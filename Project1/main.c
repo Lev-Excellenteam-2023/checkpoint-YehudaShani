@@ -15,9 +15,10 @@ int main(){
     
     deleteStudent(school, "Riley", "Pringle", "3", "4");
     //updateStudent(school, "yehuda", "shani", "1", "1", 0, "100");
-    printTopTenPerClass(school, 0);
+    //printTopTenPerClass(school, 0);
     //findAndPrintStudent(school, "yehuda", "shani");
     //printSchool(school);
+    printUnderPerformingStudents(school);
     eraseSchool(school);
     return 0;
 }

@@ -30,4 +30,6 @@ void findAndPrintStudent(School_t* school, char* firstName, char* lastName);
 
 void printTopTenPerClass(School_t* school, int index);
 
+void printUnderPerformingStudents(School_t* school);
+
 #endif // !H_SCHOOL

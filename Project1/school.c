@@ -164,7 +164,6 @@ void findAndPrintStudent(School_t* school, char* firstName, char* lastName) {
 /*
 * Function prints top ten students in every year in a specific subject
 */
-
 void printTopTenPerClass(School_t* school, int index) {
 	TopTen_t* topTen = (TopTen_t *) createTopTen(index);
 	for (int i = 0; i < 12; i++) {
@@ -185,4 +184,25 @@ void printTopTenPerClass(School_t* school, int index) {
 	}
 	free(topTen);
 }
+
+/*
+* Function prints all students with average grade below 60
+* */
+void printUnderPerformingStudents(School_t* school) {
+
+	for (int i = 0; i < 12; i++) {
+		for (int j = 0; j < 10; j++) {
+			StudentNode_t* current = school->students[i][j];
+			while (current != NULL) {
+				double average = calculateAverage(current->student);
+				if (average < 60) {
+					printf("Student average is %.2f\n", average);
+					printStudent(current->student);
+				}
+				current = current->next;
+			}
+		}
+	}
+}
+
 

@@ -22,5 +22,6 @@ Student_t* createStudent(char* firstName, char* lastName, char* phoneNumber, cha
 							char* grade2, char* grade3, char* grade4, char* grade5, char* grade6, char* grade7, char* grade8,
 							char* grade9);
 
+double calculateAverage(Student_t* student);
 
 #endif 
