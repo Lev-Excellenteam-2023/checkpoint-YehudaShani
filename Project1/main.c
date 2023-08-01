@@ -1,9 +1,13 @@
 #define _CRT_SECURE_NO_WARNINGS
-
-
 #include "school.h"
 #include <stdio.h>
 
+
+/*
+* Program simulates school list
+* A node is created for each student and every year-class has its own linked list of Student Nodes
+* All students are printed and then deleted
+*/
 int main(){
 
     School_t* school = createSchool();
@@ -39,15 +43,9 @@ int main(){
 
         StudentNode_t* studentNode = createStudentNode(student);
         addStudent(school, studentNode, params[3], params[4]);
-
-        /*
-        printf("\n");
-        printStudent(school->students[atoi(params[3]) - 1][atoi(params[4]) - 1]->student);
-        */
     }
 
     printSchool(school);
-
     eraseSchool(school);
 
     fclose(file);
