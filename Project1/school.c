@@ -28,7 +28,6 @@ School_t* createSchool() {
 
 		while (sscanf(buffer + offset, "%49s", params[numParams]) == 1) {
 			numParams++;
-
 			// Move the offset to the next word (plus 1 to skip the delimiter)
 			offset += snprintf(NULL, 0, "%s", params[numParams - 1]) + 1;
 
@@ -56,7 +55,7 @@ School_t* createSchool() {
 */
 void addStudent(School_t* school, StudentNode_t* studentNode, char* year, char* section) {
 	studentNode->next = school->students[atoi(year) - 1][atoi(section) - 1];
-	school -> students[atoi(year) - 1][atoi(section) - 1] = studentNode;
+	school->students[atoi(year) - 1][atoi(section) - 1] = studentNode;
 }
 
 /*
@@ -113,6 +112,7 @@ void insertNewStudent(School_t* school) {
 		params[3], params[4], params[5], params[6], params[7], params[8], params[9], params[10], params[11],
 		params[12], params[13], params[14]);
 	StudentNode_t* studentNode = createStudentNode(student);
+
 	addStudent(school, studentNode, params[3], params[4]);
 
 	for (int i = 0; i < 15; i++) {
@@ -125,20 +125,5 @@ void insertNewStudent(School_t* school) {
 */
 void deleteStudent(School_t* school, char* firstName, char* lastName, char* year, char* section) {
 	StudentNode_t* classList = school->students[atoi(year) - 1][atoi(section) - 1];
-	StudentNode_t* prev = NULL;
-	StudentNode_t* current = classList;
-	while (current != NULL) {
-		if (strcmp(current->student->firstName, firstName) == 0 && strcmp(current->student->lastName, lastName) == 0) {
-			if (prev == NULL) {
-				school->students[atoi(year) - 1][atoi(section) - 1] = current->next;
-			}
-			else {
-				prev->next = current->next;
-			}
-			eraseStudentNode(current);
-			return;
-		}
-		prev = current;
-		current = current->next;
-	}
+	eraseStudentNode(classList, firstName, lastName);
 }

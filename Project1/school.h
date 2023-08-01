@@ -18,3 +18,5 @@ void printSchool(School_t* school);
 void eraseSchool(School_t* school);
 
 void insertNewStudent(School_t* school);
+
+void deleteStudent(School_t* school, char* firstName, char* lastName, char* year, char* section);

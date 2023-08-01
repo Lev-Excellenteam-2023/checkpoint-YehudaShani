@@ -13,6 +13,7 @@ int main(){
     School_t* school = createSchool();
     
     insertNewStudent(school);
+    deleteStudent(school, "Riley", "Pringle", "3", "4");
     printSchool(school);
     eraseSchool(school);
     return 0;
