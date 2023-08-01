@@ -1,14 +1,20 @@
 #pragma once
-#include "studentNode.h"
 
-typedef struct topTen{
-	StudentNode_t* topStudents[10];
+#include "student.h"
+
+
+
+
+struct TopTen {
+	Student_t* topStudents[10];
 	int gradeIndex;
 	int lowestGrade;
 	int lowestGradeStudentIndex;
 	int amountOfStudents;
-} topTen_t;
+} typedef TopTen_t;
 
-topTen_t* createTopTen();
+TopTen_t* createTopTen(int gradeIndex);
 
-void addStudentToTopTen(topTen_t* topTen, StudentNode_t* studentNode);
+void addStudentToTopTen(TopTen_t* topTen, Student_t* student);
+
+void deleteTopTen(TopTen_t* topTen);

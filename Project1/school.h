@@ -24,3 +24,5 @@ void deleteStudent(School_t* school, char* firstName, char* lastName, char* year
 void updateStudent(School_t* school, char* firstName, char* lastName, char* year, char* section, int index, char* grade);
 
 void findAndPrintStudent(School_t* school, char* firstName, char* lastName);
+
+void printTopTenPerClass(School_t* school, int index);

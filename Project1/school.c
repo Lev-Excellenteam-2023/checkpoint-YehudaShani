@@ -1,6 +1,9 @@
 #define _CRT_SECURE_NO_WARNINGS
 
 #include "school.h"
+#include "topTen.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 /*
 * Constructor for school class
@@ -124,7 +127,7 @@ void insertNewStudent(School_t* school) {
 * Function deletes student from school
 */
 void deleteStudent(School_t* school, char* firstName, char* lastName, char* year, char* section) {
-	StudentNode_t* classList = school->students[atoi(year) - 1][atoi(section) - 1];
+StudentNode_t* classList = school->students[atoi(year) - 1][atoi(section) - 1];
 	eraseStudentNode(classList, firstName, lastName);
 }
 
@@ -139,6 +142,9 @@ void updateStudent(School_t* school, char* firstName, char* lastName, char* year
 	strcpy(studentNode->student->grades[index], grade);
 }
 
+/*
+* Function receives a first and last name, finds the student and prints its details
+*/
 void findAndPrintStudent(School_t* school, char* firstName, char* lastName) {
 	for (int i = 0; i < 12; i++) {
 		for (int j = 0; j < 10; j++) {
@@ -149,6 +155,28 @@ void findAndPrintStudent(School_t* school, char* firstName, char* lastName) {
 					return;
 				}
 				current = current->next;
+			}
+		}
+	}
+}
+
+/*
+* Function prints top ten students in every year in a specific subject
+*/
+void printTopTenPerClass(School_t* school, int index) {
+	TopTen_t* topTen = createTopTen(index);
+	for (int i = 0; i < 12; i++) {
+		for (int j = 0; j < 10; j++) {
+			StudentNode_t* current = school->students[i][j];
+			while (current != NULL) {
+				insertToTopTen(topTen, current->student);
+				current = current->next;
+			}
+			printf("Printing top ten students in year %d, section %d, in subject %d:\n", i + 1, j + 1, index);
+			for (int k = 0; k < 10; k++) {
+				if (topTen->topStudents[k] != NULL) {
+					printStudent(topTen->topStudents[k]);
+				}
 			}
 		}
 	}

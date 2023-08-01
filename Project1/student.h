@@ -1,6 +1,6 @@
 #pragma once
-#include <stdio.h>
-#include <stdlib.h>
+#ifndef STUDENT_H
+#define STUDENT_H
 
 /*
 * Class for representing a student
@@ -21,3 +21,5 @@ Student_t* createStudent(char* firstName, char* lastName, char* phoneNumber, cha
 void printStudent(Student_t* student);
 
 void eraseStudent(Student_t* student);
+
+#endif 
