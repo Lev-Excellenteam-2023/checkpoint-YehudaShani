@@ -11,7 +11,11 @@ typedef struct School
 
 School_t * createSchool();
 
-void addStudent(School_t* school, StudentNode_t* studentNode, char* year, char* section);
+void addStudent();
+
+void printStudent(School_t* student);
+
+void addStudentNode(School_t* school, StudentNode_t* studentNode, char* year, char* section);
 
 void printSchool(School_t* school);
 
