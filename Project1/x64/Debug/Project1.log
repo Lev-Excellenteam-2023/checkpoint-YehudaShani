@@ -1,7 +1,0 @@
-﻿  main.c
-  school.c
-  student.c
-C:\Users\yehuda\Documents\ExcelenTeam\C Project - School\Project1\student.c(10,2): warning C4013: 'strcpy' undefined; assuming extern returning int
-  studentNode.c
-  Generating Code...
-  Project1.vcxproj -> C:\Users\yehuda\Documents\ExcelenTeam\C Project - School\Project1\x64\Debug\Project1.exe
