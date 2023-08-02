@@ -245,7 +245,6 @@ void exportDatabase(School_t* school) {
 			while (current != NULL) {
 				studentInfo = studentToString(current->student);
 				fprintf(file, "%s\n", studentInfo);
-				free(studentInfo);
 				current = current->next;
 			}
 		}

@@ -68,7 +68,7 @@ double calculateAverage(Student_t* student) {
 * function returns a string representation of a student
 */
 char* studentToString(Student_t* student) {
-	char* str = malloc(1000);
+	char str[1000];
 	sprintf(str, "%s %s %s %s %s %s %s %s %s %s %s %s %s %s %s",
 				student->firstName, student->lastName, student->phoneNumber, student->year, student->section, student->grades[0], student->grades[1],
 				student->grades[2], student->grades[3], student->grades[4], student->grades[5], student->grades[6], student->grades[7],
