@@ -17,13 +17,13 @@ void getName();
 char userInput[15][30];
 int userIndexInput = 0;
 
-size_t get_input(char* dst, size_t max_size) {
+void getInput(char* dst, int max_size) {
     char* input = NULL;
-    size_t len = 0;
+    int len = 0;
     size_t len_size = 0;
-    len_size = getline(&input, &len, stdin);
+    fgets(input, max_size, stdin);
     if (len_size == -1)
-        return -1;
+        return;
     if (len_size < max_size) {
         input[len_size - 1] = '\0';
         strncpy(dst, input, len_size);
@@ -34,9 +34,7 @@ size_t get_input(char* dst, size_t max_size) {
         len_size = max_size;
     }
     free(input);
-    return len_size;
 }
-
 
 enum menu_inputs {
     Insert = '0',
@@ -135,18 +133,18 @@ int main(){
 void getNameAndClass() {
     getName();
 	printf("Enter student's year:\n");
-	get_input(userInput[userIndexInput], 30);
+	getInput(userInput[userIndexInput], 30);
 	userIndexInput++;
 	printf("Enter student's section:\n");
-	get_input(userInput[userIndexInput], 30);
+	getInput(userInput[userIndexInput], 30);
 	userIndexInput++;
 }
 
 void getName() {
 	printf("Enter student's first name:\n");
-	get_input(userInput[userIndexInput], 30);
+	getInput(userInput[userIndexInput], 30);
 	userIndexInput++;
 	printf("Enter student's last name:\n");
-	get_input(userInput[userIndexInput], 30);
+	getInput(userInput[userIndexInput], 30);
 	userIndexInput++;
 }
