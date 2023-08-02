@@ -187,7 +187,7 @@ void printTopTenPerClass(School_t* school, int index) {
 
 /*
 * Function prints all students with average grade below 60
-* */
+*/
 void printUnderPerformingStudents(School_t* school) {
 
 	for (int i = 0; i < 12; i++) {
@@ -204,5 +204,56 @@ void printUnderPerformingStudents(School_t* school) {
 		}
 	}
 }
+
+/*
+* Function prints average grade in a specific subject in every class
+*/
+void printAverageSubjectPerClass(School_t* school, int index) {
+	StudentNode_t* current;
+	int sum, count;
+	for (int i = 0; i < 12; i++) {
+		for (int j = 0; j < 10; j++) {
+			sum = 0;
+			count = 0;
+			current = school->students[i][j];
+			while (current != NULL) {
+				sum += atoi(current->student->grades[index]);
+				count++;
+				current = current->next;
+			}
+			double average = (double)sum / count;
+			printf("Average grade in subject %d in year %d - class %d is %.2f\n", index, i+1, j+1, average);
+			sum = 0;
+			count = 0;
+		}
+	}
+}
+
+/*
+* Function exports database to a file
+*/
+void exportDatabase(School_t* school) {
+	FILE* file = fopen("updatedDatabase.txt", "w");
+	if (file == NULL) {
+		printf("Error opening file!\n");
+		exit(1);
+	}
+	char* studentInfo;
+	for (int i = 0; i < 12; i++) {
+		for (int j = 0; j < 10; j++) {
+			StudentNode_t* current = school->students[i][j];
+			while (current != NULL) {
+				studentInfo = studentToString(current->student);
+				fprintf(file, "%s\n", studentInfo);
+				free(studentInfo);
+				current = current->next;
+			}
+		}
+	}
+
+
+}
+
+
 
 

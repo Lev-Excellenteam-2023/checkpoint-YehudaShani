@@ -12,13 +12,16 @@
 int main(){
     School_t* school = createSchool();
     
-    
+    insertNewStudent(school);
     deleteStudent(school, "Riley", "Pringle", "3", "4");
-    //updateStudent(school, "yehuda", "shani", "1", "1", 0, "100");
+    updateStudent(school, "yehuda", "shani", "1", "1", 0, "100");
     //printTopTenPerClass(school, 0);
     //findAndPrintStudent(school, "yehuda", "shani");
     //printSchool(school);
-    printUnderPerformingStudents(school);
+    //printUnderPerformingStudents(school);
+    //printAverageSubjectPerClass(school, 0);
+    exportDatabase(school);
     eraseSchool(school);
+
     return 0;
 }

@@ -24,4 +24,6 @@ Student_t* createStudent(char* firstName, char* lastName, char* phoneNumber, cha
 
 double calculateAverage(Student_t* student);
 
+char* studentToString(Student_t* student);
+
 #endif 

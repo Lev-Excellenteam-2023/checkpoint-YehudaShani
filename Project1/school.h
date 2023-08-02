@@ -32,4 +32,8 @@ void printTopTenPerClass(School_t* school, int index);
 
 void printUnderPerformingStudents(School_t* school);
 
+void printAverageSubjectPerClass(School_t* school, int index);
+
+void exportDatabase(School_t* school);
+
 #endif // !H_SCHOOL
