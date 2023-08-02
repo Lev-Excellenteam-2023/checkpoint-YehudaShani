@@ -250,8 +250,7 @@ void exportDatabase(School_t* school) {
 			}
 		}
 	}
-
-
+	fclose(file);
 }
 
 
