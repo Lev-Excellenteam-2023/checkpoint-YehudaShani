@@ -4,20 +4,39 @@
 #include <stdlib.h>
 #include <string.h>
 
-
-
 /*
 * Program simulates school list
 * A node is created for each student and every year-class has its own linked list of Student Nodes
 * All students are printed and then deleted
 */
 
-size_t get_input(char* dst, size_t max_size);
+
 void getNameAndClass();
 void getName();
 
 char userInput[15][30];
-int index = 0;
+int userIndexInput = 0;
+
+size_t get_input(char* dst, size_t max_size) {
+    char* input = NULL;
+    size_t len = 0;
+    size_t len_size = 0;
+    len_size = getline(&input, &len, stdin);
+    if (len_size == -1)
+        return -1;
+    if (len_size < max_size) {
+        input[len_size - 1] = '\0';
+        strncpy(dst, input, len_size);
+    }
+    else {
+        input[max_size - 1] = '\0';
+        strncpy(dst, input, max_size);
+        len_size = max_size;
+    }
+    free(input);
+    return len_size;
+}
+
 
 enum menu_inputs {
     Insert = '0',
@@ -61,20 +80,20 @@ void menu() {
         case Delete:
             getNameAndClass();
             deleteStudent(school, userInput[0], userInput[1], userInput[2], userInput[3]);
-            index = 0;
+            userIndexInput = 0;
         case Edit:
             getNameAndClass();
             printf("Please enter the course index you want to change: ");
             scanf("%d", &inputGrade);
             printf("Please enter the new grade: ");
-            getInput(userInput[index], 30);
+            getInput(userInput[userIndexInput], 30);
             updateStudent(school, userInput[0], userInput[1], userInput[2], userInput[3], inputGrade, userInput[4]);
-            index = 0;
+            userIndexInput = 0;
             break;
         case Search:
             getName();
             findAndPrintStudent(school, userInput[0], userInput[1]);
-            index = 0;
+            userIndexInput = 0;
             break;
         case Showall:
             printSchool(school);
@@ -109,46 +128,25 @@ void menu() {
 }
 int main(){
     School_t* school = createSchool();
-    
     menu();
     return 0;
-}
-
-size_t get_input(char* dst, size_t max_size) {
-    char* input = NULL;
-    size_t len = 0;
-    size_t len_size = 0;
-    len_size = getline(&input, &len, stdin);
-    if (len_size == -1)
-        return -1;
-    if (len_size < max_size) {
-        input[len_size - 1] = '\0';
-        strncpy(dst, input, len_size);
-    }
-    else {
-        input[max_size - 1] = '\0';
-        strncpy(dst, input, max_size);
-        len_size = max_size;
-    }
-    free(input);
-    return len_size;
 }
 
 void getNameAndClass() {
     getName();
 	printf("Enter student's year:\n");
-	get_input(userInput[index], 30);
-	index++;
+	get_input(userInput[userIndexInput], 30);
+	userIndexInput++;
 	printf("Enter student's section:\n");
-	get_input(userInput[index], 30);
-	index++;
+	get_input(userInput[userIndexInput], 30);
+	userIndexInput++;
 }
 
 void getName() {
 	printf("Enter student's first name:\n");
-	get_input(userInput[index], 30);
-	index++;
+	get_input(userInput[userIndexInput], 30);
+	userIndexInput++;
 	printf("Enter student's last name:\n");
-	get_input(userInput[index], 30);
-	index++;
+	get_input(userInput[userIndexInput], 30);
+	userIndexInput++;
 }
