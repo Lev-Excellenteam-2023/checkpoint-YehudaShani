@@ -17,6 +17,13 @@ void getName();
 char userInput[15][30];
 int userIndexInput = 0;
 
+void clear_stdin_buffer() {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF) {
+        // Keep reading and discarding characters until newline or EOF is encountered
+    }
+}
+
 void getInput(char* dst, int max_size) {
     char* input = NULL;
     int len = 0;
@@ -74,6 +81,7 @@ void menu() {
         switch (option) {
         case Insert:
             insertNewStudent(school);
+            clear_stdin_buffer();
             break;
         case Delete:
             getNameAndClass();
