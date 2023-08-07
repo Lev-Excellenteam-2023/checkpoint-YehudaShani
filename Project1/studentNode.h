@@ -1,4 +1,7 @@
 #pragma once
+#ifndef SDTNODE
+#define SDTNODE
+
 #include "student.h"
 
 /*
@@ -12,3 +15,8 @@ typedef struct StudentNode {
 StudentNode_t* createStudentNode(Student_t* student);
 
 void eraseWholeList(StudentNode_t* studentNode);
+
+void eraseStudentNode(StudentNode_t* studentNode, char* firstName, char* lastName);
+
+StudentNode_t* findStudentNode(StudentNode_t* studentNode, char* firstName, char* lastName);
+#endif

@@ -1,6 +1,13 @@
+<<<<<<< HEAD
 #define _CRT_SECURE_NO_WARNINGS
 
+
 #include "school.h"
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
 
 /*
 * Constructor for school class
@@ -43,8 +50,10 @@ School_t* createSchool() {
 			params[12], params[13], params[14]);
 
 		StudentNode_t* studentNode = createStudentNode(student);
-		addStudentNode(school, studentNode, params[3], params[4]);
+
+		addStudent(school, studentNode, params[3], params[4]);
 	}
+	fclose(file);
 
 	return school;
 }
@@ -55,7 +64,7 @@ School_t* createSchool() {
 */
 void addStudentNode(School_t* school, StudentNode_t* studentNode, char* year, char* section) {
 	studentNode->next = school->students[atoi(year) - 1][atoi(section) - 1];
-	school -> students[atoi(year) - 1][atoi(section) - 1] = studentNode;
+	school->students[atoi(year) - 1][atoi(section) - 1] = studentNode;
 }
 
 /*
@@ -86,7 +95,11 @@ void eraseSchool(School_t* school) {
 }
 
 /*
+<<<<<<< HEAD
 * Function receives student's details from user, creates a student and adds it to school
+=======
+* Function inserts new student to school
+>>>>>>> 7323c985f6b96f572460f622f8af2c069bacc9ec
 */
 void insertNewStudent(School_t* school) {
 	printf("Enter student's details:\n");
@@ -119,4 +132,130 @@ void insertNewStudent(School_t* school) {
 	}
 }
 
+/*
+* Function deletes student from school
+*/
+void deleteStudent(School_t* school, char* firstName, char* lastName, char* year, char* section) {
+StudentNode_t* classList = school->students[atoi(year) - 1][atoi(section) - 1];
+	eraseStudentNode(classList, firstName, lastName);
+}
 
+/*
+* Function receives a student, finds it, and updates its grande in a specific course
+*/
+void updateStudent(School_t* school, char* firstName, char* lastName, char* year, char* section, int index, char* grade) {
+	StudentNode_t* classList = school->students[atoi(year) - 1][atoi(section) - 1];
+	StudentNode_t* studentNode = findStudentNode(classList, firstName, lastName);
+
+	//TODO: maybe need to modify student from student class
+	strcpy(studentNode->student->grades[index], grade);
+}
+
+/*
+* Function receives a first and last name, finds the student and prints its details
+*/
+void findAndPrintStudent(School_t* school, char* firstName, char* lastName) {
+	for (int i = 0; i < 12; i++) {
+		for (int j = 0; j < 10; j++) {
+			StudentNode_t* current = school->students[i][j];
+			while (current != NULL) {
+				if (strcmp(current->student->firstName, firstName) == 0 && strcmp(current->student->lastName, lastName) == 0) {
+					printStudent(current->student);
+					return;
+				}
+				current = current->next;
+			}
+		}
+	}
+}
+
+/*
+* Function prints top ten students in every year in a specific subject
+*/
+void printTopTenPerClass(School_t* school, int index) {
+	TopTen_t* topTen = (TopTen_t *) createTopTen(index);
+	for (int i = 0; i < 12; i++) {
+		for (int j = 0; j < 10; j++) {
+			StudentNode_t* current = school->students[i][j];
+			while (current != NULL) {
+				addStudentToTopTen(topTen, current->student);
+				current = current->next;
+			}
+			printf("Printing best students in year %d - class %d in subject %d:\n", i+1, j+1, index);
+			for (int k = 0; k < 10; k++) {
+				if (topTen->topStudents[k] != NULL) {
+					printStudent(topTen->topStudents[k]);
+				}
+			}
+		}
+		restartTopTen(topTen);
+	}
+	free(topTen);
+}
+
+/*
+* Function prints all students with average grade below 60
+*/
+void printUnderPerformingStudents(School_t* school) {
+
+	for (int i = 0; i < 12; i++) {
+		for (int j = 0; j < 10; j++) {
+			StudentNode_t* current = school->students[i][j];
+			while (current != NULL) {
+				double average = calculateAverage(current->student);
+				if (average < 60) {
+					printf("Student average is %.2f\n", average);
+					printStudent(current->student);
+				}
+				current = current->next;
+			}
+		}
+	}
+}
+
+/*
+* Function prints average grade in a specific subject in every class
+*/
+void printAverageSubjectPerClass(School_t* school, int index) {
+	StudentNode_t* current;
+	int sum, count;
+	for (int i = 0; i < 12; i++) {
+		for (int j = 0; j < 10; j++) {
+			sum = 0;
+			count = 0;
+			current = school->students[i][j];
+			while (current != NULL) {
+				sum += atoi(current->student->grades[index]);
+				count++;
+				current = current->next;
+			}
+			double average = (double)sum / count;
+			printf("Average grade in subject %d in year %d - class %d is %.2f\n", index, i+1, j+1, average);
+			sum = 0;
+			count = 0;
+		}
+	}
+}
+
+/*
+* Function exports database to a file
+*/
+void exportDatabase(School_t* school) {
+	FILE* file = fopen("updatedDatabase.txt", "w");
+	if (file == NULL) {
+		printf("Error opening file!\n");
+		exit(1);
+	}
+	char* studentInfo;
+	for (int i = 0; i < 12; i++) {
+		for (int j = 0; j < 10; j++) {
+			StudentNode_t* current = school->students[i][j];
+			while (current != NULL) {
+				studentInfo = studentToString(current->student);
+				fprintf(file, "%s\n", studentInfo);
+				current = current->next;
+			}
+		}
+	}
+	fclose(file);
+}

@@ -1,4 +1,7 @@
 #include "student.h"
+#include <stdio.h>
+#include <stdlib.h>
+
 
 /*
 * Constructor for Student class
@@ -49,3 +52,28 @@ void printStudent(Student_t* student)
 void eraseStudent(Student_t* student) {
 	free(student);
 }
+
+/*
+* Function calculates average of student grades
+*/
+double calculateAverage(Student_t* student) {
+	double sum = 0;
+	for (int i = 0; i < 10; i++) {
+		sum += atoi(student->grades[i]);
+	}
+	return sum / 10;
+}
+
+/*
+* function returns a string representation of a student
+*/
+char* studentToString(Student_t* student) {
+	char str[1000];
+	sprintf(str, "%s %s %s %s %s %s %s %s %s %s %s %s %s %s %s",
+				student->firstName, student->lastName, student->phoneNumber, student->year, student->section, student->grades[0], student->grades[1],
+				student->grades[2], student->grades[3], student->grades[4], student->grades[5], student->grades[6], student->grades[7],
+				student->grades[8], student->grades[9]);
+	return str;
+}
+
+
